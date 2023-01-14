@@ -1,0 +1,17 @@
+service: lambda-function
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1 # optional, Use this to overwrite the default region. Default is us-east-1
+  stage: dev # optional, Set the default stage used. Default is dev
+
+functions:
+	
+  hello:	
+    handler: handler.hello # required, handler set in AWS Lambda
+    name: ${sls:stage}-simple-lambda-function # optional, Deployed Lambda name
+    description: Created by Serverless-framework. Returns a message and event info. # optional, Description to publish to AWS
+    url: true # Create the function URL. (public without CORS configuration)
+    memorySize: 128 # optional, in MB,
+    timeout: 6 # optional, in seconds, default is 6
